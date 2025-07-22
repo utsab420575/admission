@@ -1,17 +1,76 @@
-<x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('Dashboard') }}
-        </h2>
-    </x-slot>
+@extends('layouts.app')
+@section('content')
+    <section role="main" class="content-body">
+        <header class="page-header">
+            <h2>Dashboard</h2>
+            <div class="right-wrapper text-end">
+                {{--<ol class="breadcrumbs">
+                    <li>
+                        <a href="index.html">
+                            <i class="bx bx-home-alt"></i>
+                        </a>
+                    </li>
+                    --}}{{--<li><span>Layouts</span></li>
+                    <li><span>Dark Header</span></li>--}}{{--
+                </ol>--}}
+                {{--<a class="sidebar-right-toggle" data-open="sidebar-right"><i class="fas fa-chevron-left"></i></a>--}}
+            </div>
+        </header>
+        <!-- start: page -->
+        <div class="row">
+            <div class="col-md-6 col-lg-6">
+                <div class="row mb-3">
+                    <div class="col-md-6 col-xl-6">
+                        <section class="card card-featured-left card-featured-primary mb-3">
+                            <div class="card-body">
+                                <div class="widget-summary d-flex align-items-center">
+                                    <!-- Icon Column -->
+                                    <div class="widget-summary-col widget-summary-col-icon">
+                                        <div class="summary-icon bg-primary">
+                                            <i class="fa-solid fa-person-chalkboard"></i>
+                                        </div>
+                                    </div>
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900 dark:text-gray-100">
-                    {{ __("You're logged in!") }}
+                                    <!-- Text Column -->
+                                    <div class="widget-summary-col flex-grow-1 d-flex align-items-center" style="padding-left: 100px;">
+                                        <div class="summary">
+                                            <h4 class="title">--</h4>
+                                            <div class="info">
+                                                <strong class="amount">--</strong>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+
+                    <div class="col-md-6 col-xl-6">
+                        <section class="card card-featured-left card-featured-secondary">
+                            <div class="card-body">
+                                <div class="widget-summary d-flex">
+                                    <div class="widget-summary-col widget-summary-col-icon">
+                                        <div class="summary-icon bg-secondary">
+                                            <i class="fas fa-user-tie"></i>
+                                        </div>
+                                    </div>
+                                    <div class="widget-summary-col d-flex align-items-center justify-content-center">
+                                        <div class="summary">
+                                            <h4 class="title">--</h4>
+                                            <div class="info">
+                                                <strong class="amount">--</strong>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
                 </div>
+
             </div>
         </div>
-    </div>
-</x-app-layout>
+        <!-- end: page -->
+    </section>
+@endsection
