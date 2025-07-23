@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ExaminerController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RoleAssignmentController;
 use App\Http\Controllers\RoleController;
@@ -42,6 +43,17 @@ Route::middleware('auth')->group(function () {
         Route::get('/examiner-assign', 'examinerAssign')->name('examiner.assign');
         Route::post('/examiner-assign', 'storeExaminerAssign')->name('examiner.assign.store');
     });
+
+
+    //for examiner
+    Route::prefix('examiner')->name('examiner.')->controller(ExaminerController::class)->group(function () {
+        Route::get('/dashboard', 'ExaminerDashboard')->name('dashboard');
+        Route::get('/mark-entry', 'ExaminerMarkEntry')->name('mark.entry');
+        Route::post('/mark-entry', 'storeExaminerMarkEntry')->name('mark.entry.store');
+    });
+
+
+
 
 
     ///Permission All Route More actions

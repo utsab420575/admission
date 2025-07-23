@@ -32,6 +32,27 @@
                         </ul>
                     </li>
 
+                    {{-- Examiner Management --}}
+                    <li class="nav-parent">
+                        <a class="nav-link" href="#">
+                            <i class="fa-solid fa-pen-to-square" aria-hidden="true"></i>
+                            <span>Examiner Panel</span>
+                        </a>
+                        <ul class="nav nav-children">
+                            <li>
+                                <a class="nav-link" href="{{ route('examiner.dashboard') }}">
+                                    Start Entry
+                                </a>
+                            </li>
+                            <li>
+                                <a class="nav-link" href="{{ route('examiner.mark.entry') }}">
+                                    Marks Entry
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+
 
                     {{--Permission Management--}}
                     <li class="nav-parent">
