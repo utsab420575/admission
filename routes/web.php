@@ -33,6 +33,8 @@ Route::middleware('auth')->group(function () {
     });
 
 
+
+
     ///Permission All Route More actions
     // Roles/Permissions
     Route::controller(RoleController::class)->group(function () {

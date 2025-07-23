@@ -18,10 +18,10 @@
         {{--<span class="separator"></span>--}}
         <div id="userbox" class="userbox pt-2">
             <a href="#" data-bs-toggle="dropdown">
-                <figure class="profile-picture">
+               {{-- <figure class="profile-picture">
                     <img src="{{ (!empty($userData->photo)) ? url($userData->photo) : url('upload/no_image.jpg') }}" alt="user-image" class="rounded-circle">
-                    {{--<img src="{{asset('backend/assets/img/!logged-user.jpg')}}" alt="Joseph Doe" class="rounded-circle" data-lock-picture="{{asset('backend/assets/img/!logged-user.jpg')}}" />--}}
-                </figure>
+                    --}}{{--<img src="{{asset('backend/assets/img/!logged-user.jpg')}}" alt="Joseph Doe" class="rounded-circle" data-lock-picture="{{asset('backend/assets/img/!logged-user.jpg')}}" />--}}{{--
+                </figure>--}}
                 <div class="profile-info" data-lock-name="Exam Bill" data-lock-email="johndoe@okler.com">
                     <span class="name">{{$userData->name}}</span>
                     {{--<span class="role">Administrator</span>--}}

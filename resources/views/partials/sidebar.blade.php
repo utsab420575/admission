@@ -17,69 +17,60 @@
                         </a>
                     </li>
 
-                    {{-- Roles And Permission --}}
-                    @if(Auth::user()->can('role_permission.menu'))
-                        <li class="nav-parent {{ request()->routeIs('permission.*') || request()->routeIs('roles.*') ? 'nav-expanded nav-active' : '' }}">
-                            <a class="nav-link" href="#">
-                                <i class="fa-solid fa-toolbox" aria-hidden="true"></i>
-                                <span>Roles And Permission</span>
-                            </a>
-                            <ul class="nav nav-children">
-                                @can('permission.all')
-                                    <li>
-                                        <a class="nav-link {{ request()->routeIs('permission.all') ? 'text-primary' : '' }}"
-                                           href="{{ route('permission.all') }}">
-                                            All Permission
-                                        </a>
-                                    </li>
-                                @endcan
-                                @can('roles.all')
-                                    <li>
-                                        <a class="nav-link {{ request()->routeIs('roles.all') ? 'text-primary' : '' }}"
-                                           href="{{ route('roles.all') }}">
-                                            All Roles
-                                        </a>
-                                    </li>
-                                @endcan
-                                @can('roles.permission.all')
-                                    <li>
-                                        <a class="nav-link {{ request()->routeIs('roles.permission.all') ? 'text-primary' : '' }}"
-                                           href="{{ route('roles.permission.all') }}">
-                                            All Roles in Permission
-                                        </a>
-                                    </li>
-                                @endcan
-                                @can('roles.permissions.add')
-                                    <li>
-                                        <a class="nav-link {{ request()->routeIs('roles.permissions.add') ? 'text-primary' : '' }}"
-                                           href="{{ route('roles.permissions.add') }}">
-                                            Roles in Permission
-                                        </a>
-                                    </li>
-                                @endcan
-                            </ul>
-                        </li>
-                    @endif
+                    {{--Permission Management--}}
+                    <li class="nav-parent">
+                        <a class="nav-link" href="#">
+                            <i class="fa-solid fa-file-pdf"  aria-hidden="true"></i>
+                            <span> Roles And Permission</span>
+                        </a>
+                        <ul class="nav nav-children">
+                            <li>
+                                <a class="nav-link" href="{{route('permission.all')}}">
+                                    All Permission
+                                </a>
+                            </li>
 
-                    {{-- Role Assignment --}}
-                    @if(Auth::user()->can('role_assign.menu'))
-                        <li class="nav-parent {{ request()->routeIs('role.assignments.*') ? 'nav-expanded nav-active' : '' }}">
-                            <a class="nav-link" href="#">
-                                <i class="fa-solid fa-lock-open" aria-hidden="true"></i>
-                                <span>Setting Admin User</span>
-                            </a>
-                            <ul class="nav nav-children">
-                                @can('role.assignments.all')
-                                    <li>
-                                        <a class="nav-link {{ request()->routeIs('role.assignments.all') ? 'text-primary' : '' }}"
-                                           href="{{ route('role.assignments.all') }}">
-                                            All User
-                                        </a>
-                                    </li>
-                                @endcan
-                            </ul>
-                        </li>
-                    @endif
+                            <li>
+                                <a class="nav-link" href="{{route('roles.all')}}">
+                                    All Roles
+                                </a>
+                            </li>
+
+                            <li>
+                                <a class="nav-link" href="{{route('roles.permissions.add')}}">
+                                    Roles in Permission
+                                </a>
+                            </li>
+
+                            <li>
+                                <a class="nav-link" href="{{route('roles.permission.all')}}">
+                                    All Roles in Permission
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+
+                    {{--Role Assignment To Model(User)--}}
+                    <li class="nav-parent">
+                        <a class="nav-link" href="#">
+                            <i class="fa-solid fa-file-pdf"  aria-hidden="true"></i>
+                            <span> Setting Admin User </span>
+                        </a>
+                        <ul class="nav nav-children">
+                            <li>
+                                <a class="nav-link" href="{{route('role.assignments.all')}}">
+                                    All User
+                                </a>
+                            </li>
+
+                            <li>
+                                <a class="nav-link" href="{{route('role.assignments.add')}}">
+                                    Add User
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
 
 
 
