@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RoleAssignmentController;
 use App\Http\Controllers\RoleController;
+use App\Http\Controllers\CoordinatorController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -33,6 +34,14 @@ Route::middleware('auth')->group(function () {
     });
 
 
+    //here route will be coordinator/dashboard
+    //here route name will be coordinator.dashboard
+    //here route name will be coordinator.examiner.assign
+    Route::prefix('coordinator')->name('coordinator.')->controller(CoordinatorController::class)->group(function () {
+        Route::get('/dashboard', 'dashboard')->name('dashboard');
+        Route::get('/examiner-assign', 'examinerAssign')->name('examiner.assign');
+        Route::post('/examiner-assign', 'storeExaminerAssign')->name('examiner.assign.store');
+    });
 
 
     ///Permission All Route More actions

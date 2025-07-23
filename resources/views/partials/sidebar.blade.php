@@ -17,6 +17,22 @@
                         </a>
                     </li>
 
+                    {{--Coordinator  Management--}}
+                    <li class="nav-parent">
+                        <a class="nav-link" href="#">
+                            <i class="fa-solid fa-user-tie" aria-hidden="true"></i>
+                            <span>Coordinator Panel</span>
+                        </a>
+                        <ul class="nav nav-children">
+                            <li>
+                                <a class="nav-link" href="{{route('coordinator.examiner.assign')}}">
+                                    Examiner Assign
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+
                     {{--Permission Management--}}
                     <li class="nav-parent">
                         <a class="nav-link" href="#">
