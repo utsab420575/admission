@@ -15,4 +15,10 @@ class Department extends Model
     public function students() {
         return $this->hasMany(Student::class);
     }
+
+    // Define the relationship with the Mark model
+    public function marks()
+    {
+        return $this->hasMany(Mark::class);
+    }
 }

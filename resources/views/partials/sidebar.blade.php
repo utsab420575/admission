@@ -53,6 +53,32 @@
                     </li>
 
 
+                    {{-- Report Management --}}
+                    <li class="nav-parent">
+                        <a class="nav-link" href="#">
+                            <i class="fa-solid fa-pen-to-square" aria-hidden="true"></i>
+                            <span>Report</span>
+                        </a>
+                        <ul class="nav nav-children">
+                            <li>
+                                <a class="nav-link" href="{{ route('report.english_mcq_pass') }}">
+                                    English MCQ Pass Report
+                                </a>
+                            </li>
+                            <li>
+                                <a class="nav-link" href="{{ route('report.first_part_pass') }}">
+                                    First Part Pass Report
+                                </a>
+                            </li>
+                            <li>
+                                <a class="nav-link" href="{{ route('report.missing_question') }}">
+                                    Missing Question Report
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+
 
                     {{--Permission Management--}}
                     <li class="nav-parent">

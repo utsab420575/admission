@@ -47,4 +47,8 @@ class ExaminerController extends Controller
         ));
         //return view('examiner_panel.start_entry');
     }
+
+    public function ExaminerMarkEntry(){
+
+    }
 }

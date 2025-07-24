@@ -78,11 +78,11 @@
                                                 <table class="table table-bordered">
                                                     <thead>
                                                     <tr>
-                                                        <th style="width: 15%;">Department</th>
-                                                        <th style="width: 15%;">Group</th>
-                                                        <th style="width: 15%;">PartType</th>
-                                                        <th style="width: 15%;">Question No</th>
-                                                        <th style="width: 40%;">Examiner</th>
+                                                        <th style="width: 10%;">Department</th>
+                                                        <th style="width: 10%;">Group</th>
+                                                        <th style="width: 10%;">PartType</th>
+                                                        <th style="width: 10%;">Question No</th>
+                                                        <th style="width: 60%;">Examiner</th>
                                                     </tr>
                                                     </thead>
                                                     <tbody>
@@ -107,19 +107,50 @@
                                                                 </select>
                                                             </td>--}}
                                                             <td>
-                                                                <select name="examiners[{{ $single_question_assign->id }}]"
-                                                                        class="form-control populate"
-                                                                        data-plugin-selectTwo
-                                                                        required>
-                                                                    <option value="">Select Examiner</option>
-                                                                    @foreach($examiners as $examiner)
-                                                                        <option value="{{ $examiner->id }}"
-                                                                            {{ optional($single_question_assign->examiner)->user_id == $examiner->id ? 'selected' : '' }}>
-                                                                            {{ $examiner->name }} - {{ $examiner->email }}
-                                                                        </option>
-                                                                    @endforeach
-                                                                </select>
+                                                                @if ($loop->first)
+                                                                    <label for="">Part A</label>
+                                                                    <select name="examiners_part_a[{{ $single_question_assign->id }}]"
+                                                                            class="form-control populate mb-2"
+                                                                            data-plugin-selectTwo
+                                                                            required>
+                                                                        <option value="">Select Examiner (Part A)</option>
+                                                                        @foreach($examiners as $examiner)
+                                                                            <option value="{{ $examiner->id }}"
+                                                                               >
+                                                                                {{ $examiner->name }} - {{ $examiner->email }}
+                                                                            </option>
+                                                                        @endforeach
+                                                                    </select>
+
+                                                                    <label for="">Part B</label>
+                                                                    <select name="examiners_part_b[{{ $single_question_assign->id }}]"
+                                                                            class="form-control populate"
+                                                                            data-plugin-selectTwo
+                                                                            required>
+                                                                        <option value="">Select Examiner (Part B)</option>
+                                                                        @foreach($examiners as $examiner)
+                                                                            <option value="{{ $examiner->id }}"
+                                                                               >
+                                                                                {{ $examiner->name }} - {{ $examiner->email }}
+                                                                            </option>
+                                                                        @endforeach
+                                                                    </select>
+                                                                @else
+                                                                    <select name="examiners[{{ $single_question_assign->id }}][]" multiple
+                                                                            class="form-control populate"
+                                                                            data-plugin-selectTwo
+                                                                            required>
+                                                                        <option value="">Select Examiner</option>
+                                                                        @foreach($examiners as $examiner)
+                                                                            <option value="{{ $examiner->id }}"
+                                                                                {{ optional($single_question_assign->examiner)->user_id == $examiner->id ? 'selected' : '' }}>
+                                                                                {{ $examiner->name }} - {{ $examiner->email }}
+                                                                            </option>
+                                                                        @endforeach
+                                                                    </select>
+                                                                @endif
                                                             </td>
+
                                                         </tr>
                                                     @endforeach
                                                     </tbody>
@@ -139,11 +170,11 @@
                                                 <table class="table table-bordered">
                                                     <thead>
                                                     <tr>
-                                                        <th style="width: 15%;">Department</th>
-                                                        <th style="width: 15%;">Group</th>
-                                                        <th style="width: 15%;">PartType</th>
-                                                        <th style="width: 15%;">Question No</th>
-                                                        <th style="width: 40%;">Examiner</th>
+                                                        <th style="width: 10%;">Department</th>
+                                                        <th style="width: 10%;">Group</th>
+                                                        <th style="width: 10%;">PartType</th>
+                                                        <th style="width: 10%;">Question No</th>
+                                                        <th style="width: 60%;">Examiner</th>
                                                     </tr>
                                                     </thead>
                                                     <tbody>
@@ -168,18 +199,48 @@
                                                                 </select>
                                                             </td>--}}
                                                             <td>
-                                                                <select name="examiners[{{ $single_question_assign->id }}]"
-                                                                        class="form-control populate"
-                                                                        data-plugin-selectTwo
-                                                                        required>
-                                                                    <option value="">Select Examiner</option>
-                                                                    @foreach($examiners as $examiner)
-                                                                        <option value="{{ $examiner->id }}"
-                                                                            {{ optional($single_question_assign->examiner)->user_id == $examiner->id ? 'selected' : '' }}>
-                                                                            {{ $examiner->name }} - {{ $examiner->email }}
-                                                                        </option>
-                                                                    @endforeach
-                                                                </select>
+                                                                @if ($loop->first)
+                                                                    <label for="">Part A</label>
+                                                                    <select name="examiners_part_a[{{ $single_question_assign->id }}]"
+                                                                            class="form-control populate mb-2"
+                                                                            data-plugin-selectTwo
+                                                                            required>
+                                                                        <option value="">Select Examiner (Part A)</option>
+                                                                        @foreach($examiners as $examiner)
+                                                                            <option value="{{ $examiner->id }}"
+                                                                            >
+                                                                                {{ $examiner->name }} - {{ $examiner->email }}
+                                                                            </option>
+                                                                        @endforeach
+                                                                    </select>
+
+                                                                    <label for="">Part B</label>
+                                                                    <select name="examiners[{{ $single_question_assign->id }}][]" multiple
+                                                                            class="form-control populate"
+                                                                            data-plugin-selectTwo
+                                                                            required>
+                                                                        <option value="">Select Examiner (Part B)</option>
+                                                                        @foreach($examiners as $examiner)
+                                                                            <option value="{{ $examiner->id }}"
+                                                                            >
+                                                                                {{ $examiner->name }} - {{ $examiner->email }}
+                                                                            </option>
+                                                                        @endforeach
+                                                                    </select>
+                                                                @else
+                                                                    <select name="examiners[{{ $single_question_assign->id }}]"
+                                                                            class="form-control populate"
+                                                                            data-plugin-selectTwo
+                                                                            required>
+                                                                        <option value="">Select Examiner</option>
+                                                                        @foreach($examiners as $examiner)
+                                                                            <option value="{{ $examiner->id }}"
+                                                                                {{ optional($single_question_assign->examiner)->user_id == $examiner->id ? 'selected' : '' }}>
+                                                                                {{ $examiner->name }} - {{ $examiner->email }}
+                                                                            </option>
+                                                                        @endforeach
+                                                                    </select>
+                                                                @endif
                                                             </td>
                                                         </tr>
                                                     @endforeach
@@ -199,11 +260,11 @@
                                                 <table class="table table-bordered">
                                                     <thead>
                                                     <tr>
-                                                        <th style="width: 15%;">Department</th>
-                                                        <th style="width: 15%;">Group</th>
-                                                        <th style="width: 15%;">PartType</th>
-                                                        <th style="width: 15%;">Question No</th>
-                                                        <th style="width: 40%;">Examiner</th>
+                                                        <th style="width: 10%;">Department</th>
+                                                        <th style="width: 10%;">Group</th>
+                                                        <th style="width: 10%;">PartType</th>
+                                                        <th style="width: 10%;">Question No</th>
+                                                        <th style="width: 60%;">Examiner</th>
                                                     </tr>
                                                     </thead>
                                                     <tbody>
@@ -228,18 +289,48 @@
                                                                 </select>
                                                             </td>--}}
                                                             <td>
-                                                                <select name="examiners[{{ $single_question_assign->id }}]"
-                                                                        class="form-control populate"
-                                                                        data-plugin-selectTwo
-                                                                        required>
-                                                                    <option value="">Select Examiner</option>
-                                                                    @foreach($examiners as $examiner)
-                                                                        <option value="{{ $examiner->id }}"
-                                                                            {{ optional($single_question_assign->examiner)->user_id == $examiner->id ? 'selected' : '' }}>
-                                                                            {{ $examiner->name }} - {{ $examiner->email }}
-                                                                        </option>
-                                                                    @endforeach
-                                                                </select>
+                                                                @if ($loop->first)
+                                                                    <label for="">Part A</label>
+                                                                    <select name="examiners_part_a[{{ $single_question_assign->id }}]"
+                                                                            class="form-control populate mb-2"
+                                                                            data-plugin-selectTwo
+                                                                            required>
+                                                                        <option value="">Select Examiner (Part A)</option>
+                                                                        @foreach($examiners as $examiner)
+                                                                            <option value="{{ $examiner->id }}"
+                                                                            >
+                                                                                {{ $examiner->name }} - {{ $examiner->email }}
+                                                                            </option>
+                                                                        @endforeach
+                                                                    </select>
+
+                                                                    <label for="">Part B</label>
+                                                                    <select name="examiners_part_b[{{ $single_question_assign->id }}]"
+                                                                            class="form-control populate"
+                                                                            data-plugin-selectTwo
+                                                                            required>
+                                                                        <option value="">Select Examiner (Part B)</option>
+                                                                        @foreach($examiners as $examiner)
+                                                                            <option value="{{ $examiner->id }}"
+                                                                            >
+                                                                                {{ $examiner->name }} - {{ $examiner->email }}
+                                                                            </option>
+                                                                        @endforeach
+                                                                    </select>
+                                                                @else
+                                                                    <select name="examiners[{{ $single_question_assign->id }}]"
+                                                                            class="form-control populate"
+                                                                            data-plugin-selectTwo
+                                                                            required>
+                                                                        <option value="">Select Examiner</option>
+                                                                        @foreach($examiners as $examiner)
+                                                                            <option value="{{ $examiner->id }}"
+                                                                                {{ optional($single_question_assign->examiner)->user_id == $examiner->id ? 'selected' : '' }}>
+                                                                                {{ $examiner->name }} - {{ $examiner->email }}
+                                                                            </option>
+                                                                        @endforeach
+                                                                    </select>
+                                                                @endif
                                                             </td>
                                                         </tr>
                                                     @endforeach
@@ -251,19 +342,18 @@
                                         </div>
                                         {{-- Architecture Engineering (department_id = 6) --}}
                                         <div id="arch" class="tab-pane {{ $activeTab == 6 ? 'show active' : '' }}" role="tabpanel">
-                                            <form method="POST"
-                                                  action="{{ route('coordinator.examiner.assign.store') }}">
+                                            <form method="POST" action="{{ route('coordinator.examiner.assign.store') }}">
                                                 @csrf
                                                 <input type="hidden" name="department_id" value="6">
 
                                                 <table class="table table-bordered">
                                                     <thead>
                                                     <tr>
-                                                        <th style="width: 15%;">Department</th>
-                                                        <th style="width: 15%;">Group</th>
-                                                        <th style="width: 15%;">PartType</th>
-                                                        <th style="width: 15%;">Question No</th>
-                                                        <th style="width: 40%;">Examiner</th>
+                                                        <th style="width: 10%;">Department</th>
+                                                        <th style="width: 10%;">Group</th>
+                                                        <th style="width: 10%;">PartType</th>
+                                                        <th style="width: 10%;">Question No</th>
+                                                        <th style="width: 60%;">Examiner</th>
                                                     </tr>
                                                     </thead>
                                                     <tbody>
@@ -273,33 +363,44 @@
                                                             <td>{{ $single_question_assign->group->group ?? 'N/A' }}</td>
                                                             <td>{{ $single_question_assign->partType->type ?? 'N/A' }}</td>
                                                             <td>{{ $single_question_assign->quest_no }}</td>
-                                                            {{--<td>
-                                                                <select
-                                                                    name="examiners[{{ $single_question_assign->id }}]"
-                                                                    class="form-control populate"
-                                                                    data-plugin-selectTwo
-                                                                    required>
-                                                                    <option value="">Select Examiner</option>
-                                                                    @foreach($examiners as $examiner)
-                                                                        <option
-                                                                            value="{{ $examiner->id }}">{{ $examiner->name }}
-                                                                            -{{$examiner->email}}</option>
-                                                                    @endforeach
-                                                                </select>
-                                                            </td>--}}
                                                             <td>
-                                                                <select name="examiners[{{ $single_question_assign->id }}]"
-                                                                        class="form-control populate"
-                                                                        data-plugin-selectTwo
-                                                                        required>
-                                                                    <option value="">Select Examiner</option>
-                                                                    @foreach($examiners as $examiner)
-                                                                        <option value="{{ $examiner->id }}"
-                                                                            {{ optional($single_question_assign->examiner)->user_id == $examiner->id ? 'selected' : '' }}>
-                                                                            {{ $examiner->name }} - {{ $examiner->email }}
-                                                                        </option>
-                                                                    @endforeach
-                                                                </select>
+                                                                @if ($loop->first)
+                                                                    <label>Part A</label>
+                                                                    <select name="examiners_part_a[{{ $single_question_assign->id }}]"
+                                                                            class="form-control populate mb-2"
+                                                                            data-plugin-selectTwo required>
+                                                                        <option value="">Select Examiner (Part A)</option>
+                                                                        @foreach($examiners as $examiner)
+                                                                            <option value="{{ $examiner->id }}">
+                                                                                {{ $examiner->name }} - {{ $examiner->email }}
+                                                                            </option>
+                                                                        @endforeach
+                                                                    </select>
+
+                                                                    <label>Part B</label>
+                                                                    <select name="examiners_part_b[{{ $single_question_assign->id }}]"
+                                                                            class="form-control populate"
+                                                                            data-plugin-selectTwo required>
+                                                                        <option value="">Select Examiner (Part B)</option>
+                                                                        @foreach($examiners as $examiner)
+                                                                            <option value="{{ $examiner->id }}">
+                                                                                {{ $examiner->name }} - {{ $examiner->email }}
+                                                                            </option>
+                                                                        @endforeach
+                                                                    </select>
+                                                                @else
+                                                                    <select name="examiners[{{ $single_question_assign->id }}]"
+                                                                            class="form-control populate"
+                                                                            data-plugin-selectTwo required>
+                                                                        <option value="">Select Examiner</option>
+                                                                        @foreach($examiners as $examiner)
+                                                                            <option value="{{ $examiner->id }}"
+                                                                                {{ optional($single_question_assign->examiner)->user_id == $examiner->id ? 'selected' : '' }}>
+                                                                                {{ $examiner->name }} - {{ $examiner->email }}
+                                                                            </option>
+                                                                        @endforeach
+                                                                    </select>
+                                                                @endif
                                                             </td>
                                                         </tr>
                                                     @endforeach
@@ -309,6 +410,7 @@
                                                 <button type="submit" class="btn btn-primary">Submit</button>
                                             </form>
                                         </div>
+
                                         {{-- EEE  (department_id = 2) --}}
                                         <div id="eee" class="tab-pane {{ $activeTab == 2 ? 'show active' : '' }}" role="tabpanel">
                                             <form method="POST"
@@ -319,11 +421,11 @@
                                                 <table class="table table-bordered">
                                                     <thead>
                                                     <tr>
-                                                        <th style="width: 15%;">Department</th>
-                                                        <th style="width: 15%;">Group</th>
-                                                        <th style="width: 15%;">PartType</th>
-                                                        <th style="width: 15%;">Question No</th>
-                                                        <th style="width: 40%;">Examiner</th>
+                                                        <th style="width: 10%;">Department</th>
+                                                        <th style="width: 10%;">Group</th>
+                                                        <th style="width: 10%;">PartType</th>
+                                                        <th style="width: 10%;">Question No</th>
+                                                        <th style="width: 60%;">Examiner</th>
                                                     </tr>
                                                     </thead>
                                                     <tbody>
@@ -348,18 +450,48 @@
                                                                 </select>
                                                             </td>--}}
                                                             <td>
-                                                                <select name="examiners[{{ $single_question_assign->id }}]"
-                                                                        class="form-control populate"
-                                                                        data-plugin-selectTwo
-                                                                        required>
-                                                                    <option value="">Select Examiner</option>
-                                                                    @foreach($examiners as $examiner)
-                                                                        <option value="{{ $examiner->id }}"
-                                                                            {{ optional($single_question_assign->examiner)->user_id == $examiner->id ? 'selected' : '' }}>
-                                                                            {{ $examiner->name }} - {{ $examiner->email }}
-                                                                        </option>
-                                                                    @endforeach
-                                                                </select>
+                                                                @if ($loop->first)
+                                                                    <label for="">Part A</label>
+                                                                    <select name="examiners_part_a[{{ $single_question_assign->id }}]"
+                                                                            class="form-control populate mb-2"
+                                                                            data-plugin-selectTwo
+                                                                            required>
+                                                                        <option value="">Select Examiner (Part A)</option>
+                                                                        @foreach($examiners as $examiner)
+                                                                            <option value="{{ $examiner->id }}"
+                                                                            >
+                                                                                {{ $examiner->name }} - {{ $examiner->email }}
+                                                                            </option>
+                                                                        @endforeach
+                                                                    </select>
+
+                                                                    <label for="">Part B</label>
+                                                                    <select name="examiners_part_b[{{ $single_question_assign->id }}]"
+                                                                            class="form-control populate"
+                                                                            data-plugin-selectTwo
+                                                                            required>
+                                                                        <option value="">Select Examiner (Part B)</option>
+                                                                        @foreach($examiners as $examiner)
+                                                                            <option value="{{ $examiner->id }}"
+                                                                            >
+                                                                                {{ $examiner->name }} - {{ $examiner->email }}
+                                                                            </option>
+                                                                        @endforeach
+                                                                    </select>
+                                                                @else
+                                                                    <select name="examiners[{{ $single_question_assign->id }}]"
+                                                                            class="form-control populate"
+                                                                            data-plugin-selectTwo
+                                                                            required>
+                                                                        <option value="">Select Examiner</option>
+                                                                        @foreach($examiners as $examiner)
+                                                                            <option value="{{ $examiner->id }}"
+                                                                                {{ optional($single_question_assign->examiner)->user_id == $examiner->id ? 'selected' : '' }}>
+                                                                                {{ $examiner->name }} - {{ $examiner->email }}
+                                                                            </option>
+                                                                        @endforeach
+                                                                    </select>
+                                                                @endif
                                                             </td>
                                                         </tr>
                                                     @endforeach
@@ -379,11 +511,11 @@
                                                 <table class="table table-bordered">
                                                     <thead>
                                                     <tr>
-                                                        <th style="width: 15%;">Department</th>
-                                                        <th style="width: 15%;">Group</th>
-                                                        <th style="width: 15%;">PartType</th>
-                                                        <th style="width: 15%;">Question No</th>
-                                                        <th style="width: 40%;">Examiner</th>
+                                                        <th style="width: 10%;">Department</th>
+                                                        <th style="width: 10%;">Group</th>
+                                                        <th style="width: 10%;">PartType</th>
+                                                        <th style="width: 10%;">Question No</th>
+                                                        <th style="width: 60%;">Examiner</th>
                                                     </tr>
                                                     </thead>
                                                     <tbody>
@@ -408,18 +540,48 @@
                                                                 </select>
                                                             </td>--}}
                                                             <td>
-                                                                <select name="examiners[{{ $single_question_assign->id }}]"
-                                                                        class="form-control populate"
-                                                                        data-plugin-selectTwo
-                                                                        required>
-                                                                    <option value="">Select Examiner</option>
-                                                                    @foreach($examiners as $examiner)
-                                                                        <option value="{{ $examiner->id }}"
-                                                                            {{ optional($single_question_assign->examiner)->user_id == $examiner->id ? 'selected' : '' }}>
-                                                                            {{ $examiner->name }} - {{ $examiner->email }}
-                                                                        </option>
-                                                                    @endforeach
-                                                                </select>
+                                                                @if ($loop->first)
+                                                                    <label for="">Part A</label>
+                                                                    <select name="examiners_part_a[{{ $single_question_assign->id }}]"
+                                                                            class="form-control populate mb-2"
+                                                                            data-plugin-selectTwo
+                                                                            required>
+                                                                        <option value="">Select Examiner (Part A)</option>
+                                                                        @foreach($examiners as $examiner)
+                                                                            <option value="{{ $examiner->id }}"
+                                                                            >
+                                                                                {{ $examiner->name }} - {{ $examiner->email }}
+                                                                            </option>
+                                                                        @endforeach
+                                                                    </select>
+
+                                                                    <label for="">Part B</label>
+                                                                    <select name="examiners_part_b[{{ $single_question_assign->id }}]"
+                                                                            class="form-control populate"
+                                                                            data-plugin-selectTwo
+                                                                            required>
+                                                                        <option value="">Select Examiner (Part B)</option>
+                                                                        @foreach($examiners as $examiner)
+                                                                            <option value="{{ $examiner->id }}"
+                                                                            >
+                                                                                {{ $examiner->name }} - {{ $examiner->email }}
+                                                                            </option>
+                                                                        @endforeach
+                                                                    </select>
+                                                                @else
+                                                                    <select name="examiners[{{ $single_question_assign->id }}]"
+                                                                            class="form-control populate"
+                                                                            data-plugin-selectTwo
+                                                                            required>
+                                                                        <option value="">Select Examiner</option>
+                                                                        @foreach($examiners as $examiner)
+                                                                            <option value="{{ $examiner->id }}"
+                                                                                {{ optional($single_question_assign->examiner)->user_id == $examiner->id ? 'selected' : '' }}>
+                                                                                {{ $examiner->name }} - {{ $examiner->email }}
+                                                                            </option>
+                                                                        @endforeach
+                                                                    </select>
+                                                                @endif
                                                             </td>
                                                         </tr>
                                                     @endforeach
@@ -439,11 +601,11 @@
                                                 <table class="table table-bordered">
                                                     <thead>
                                                     <tr>
-                                                        <th style="width: 15%;">Department</th>
-                                                        <th style="width: 15%;">Group</th>
-                                                        <th style="width: 15%;">PartType</th>
-                                                        <th style="width: 15%;">Question No</th>
-                                                        <th style="width: 40%;">Examiner</th>
+                                                        <th style="width: 10%;">Department</th>
+                                                        <th style="width: 10%;">Group</th>
+                                                        <th style="width: 10%;">PartType</th>
+                                                        <th style="width: 10%;">Question No</th>
+                                                        <th style="width: 60%;">Examiner</th>
                                                     </tr>
                                                     </thead>
                                                     <tbody>
@@ -468,18 +630,48 @@
                                                                 </select>
                                                             </td>--}}
                                                             <td>
-                                                                <select name="examiners[{{ $single_question_assign->id }}]"
-                                                                        class="form-control populate"
-                                                                        data-plugin-selectTwo
-                                                                        required>
-                                                                    <option value="">Select Examiner</option>
-                                                                    @foreach($examiners as $examiner)
-                                                                        <option value="{{ $examiner->id }}"
-                                                                            {{ optional($single_question_assign->examiner)->user_id == $examiner->id ? 'selected' : '' }}>
-                                                                            {{ $examiner->name }} - {{ $examiner->email }}
-                                                                        </option>
-                                                                    @endforeach
-                                                                </select>
+                                                                @if ($loop->first)
+                                                                    <label for="">Part A</label>
+                                                                    <select name="examiners_part_a[{{ $single_question_assign->id }}]"
+                                                                            class="form-control populate mb-2"
+                                                                            data-plugin-selectTwo
+                                                                            required>
+                                                                        <option value="">Select Examiner (Part A)</option>
+                                                                        @foreach($examiners as $examiner)
+                                                                            <option value="{{ $examiner->id }}"
+                                                                            >
+                                                                                {{ $examiner->name }} - {{ $examiner->email }}
+                                                                            </option>
+                                                                        @endforeach
+                                                                    </select>
+
+                                                                    <label for="">Part B</label>
+                                                                    <select name="examiners_part_b[{{ $single_question_assign->id }}]"
+                                                                            class="form-control populate"
+                                                                            data-plugin-selectTwo
+                                                                            required>
+                                                                        <option value="">Select Examiner (Part B)</option>
+                                                                        @foreach($examiners as $examiner)
+                                                                            <option value="{{ $examiner->id }}"
+                                                                            >
+                                                                                {{ $examiner->name }} - {{ $examiner->email }}
+                                                                            </option>
+                                                                        @endforeach
+                                                                    </select>
+                                                                @else
+                                                                    <select name="examiners[{{ $single_question_assign->id }}]"
+                                                                            class="form-control populate"
+                                                                            data-plugin-selectTwo
+                                                                            required>
+                                                                        <option value="">Select Examiner</option>
+                                                                        @foreach($examiners as $examiner)
+                                                                            <option value="{{ $examiner->id }}"
+                                                                                {{ optional($single_question_assign->examiner)->user_id == $examiner->id ? 'selected' : '' }}>
+                                                                                {{ $examiner->name }} - {{ $examiner->email }}
+                                                                            </option>
+                                                                        @endforeach
+                                                                    </select>
+                                                                @endif
                                                             </td>
                                                         </tr>
                                                     @endforeach
@@ -499,11 +691,11 @@
                                                 <table class="table table-bordered">
                                                     <thead>
                                                     <tr>
-                                                        <th style="width: 15%;">Department</th>
-                                                        <th style="width: 15%;">Group</th>
-                                                        <th style="width: 15%;">PartType</th>
-                                                        <th style="width: 15%;">Question No</th>
-                                                        <th style="width: 40%;">Examiner</th>
+                                                        <th style="width: 10%;">Department</th>
+                                                        <th style="width: 10%;">Group</th>
+                                                        <th style="width: 10%;">PartType</th>
+                                                        <th style="width: 10%;">Question No</th>
+                                                        <th style="width: 60%;">Examiner</th>
                                                     </tr>
                                                     </thead>
                                                     <tbody>
@@ -528,18 +720,48 @@
                                                                 </select>
                                                             </td>--}}
                                                             <td>
-                                                                <select name="examiners[{{ $single_question_assign->id }}]"
-                                                                        class="form-control populate"
-                                                                        data-plugin-selectTwo
-                                                                        required>
-                                                                    <option value="">Select Examiner</option>
-                                                                    @foreach($examiners as $examiner)
-                                                                        <option value="{{ $examiner->id }}"
-                                                                            {{ optional($single_question_assign->examiner)->user_id == $examiner->id ? 'selected' : '' }}>
-                                                                            {{ $examiner->name }} - {{ $examiner->email }}
-                                                                        </option>
-                                                                    @endforeach
-                                                                </select>
+                                                                @if ($loop->first)
+                                                                    <label for="">Part A</label>
+                                                                    <select name="examiners_part_a[{{ $single_question_assign->id }}]"
+                                                                            class="form-control populate mb-2"
+                                                                            data-plugin-selectTwo
+                                                                            required>
+                                                                        <option value="">Select Examiner (Part A)</option>
+                                                                        @foreach($examiners as $examiner)
+                                                                            <option value="{{ $examiner->id }}"
+                                                                            >
+                                                                                {{ $examiner->name }} - {{ $examiner->email }}
+                                                                            </option>
+                                                                        @endforeach
+                                                                    </select>
+
+                                                                    <label for="">Part B</label>
+                                                                    <select name="examiners_part_b[{{ $single_question_assign->id }}]"
+                                                                            class="form-control populate"
+                                                                            data-plugin-selectTwo
+                                                                            required>
+                                                                        <option value="">Select Examiner (Part B)</option>
+                                                                        @foreach($examiners as $examiner)
+                                                                            <option value="{{ $examiner->id }}"
+                                                                            >
+                                                                                {{ $examiner->name }} - {{ $examiner->email }}
+                                                                            </option>
+                                                                        @endforeach
+                                                                    </select>
+                                                                @else
+                                                                    <select name="examiners[{{ $single_question_assign->id }}]"
+                                                                            class="form-control populate"
+                                                                            data-plugin-selectTwo
+                                                                            required>
+                                                                        <option value="">Select Examiner</option>
+                                                                        @foreach($examiners as $examiner)
+                                                                            <option value="{{ $examiner->id }}"
+                                                                                {{ optional($single_question_assign->examiner)->user_id == $examiner->id ? 'selected' : '' }}>
+                                                                                {{ $examiner->name }} - {{ $examiner->email }}
+                                                                            </option>
+                                                                        @endforeach
+                                                                    </select>
+                                                                @endif
                                                             </td>
                                                         </tr>
                                                     @endforeach

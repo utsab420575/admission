@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ExaminerController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ReportController;
 use App\Http\Controllers\RoleAssignmentController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\CoordinatorController;
@@ -51,6 +52,19 @@ Route::middleware('auth')->group(function () {
         Route::get('/mark-entry', 'ExaminerMarkEntry')->name('mark.entry');
         Route::post('/mark-entry', 'storeExaminerMarkEntry')->name('mark.entry.store');
     });
+
+
+    //for report
+    Route::prefix('report')->name('report.')->controller(ReportController::class)->group(function () {
+        Route::get('/english-mcq-pass', 'englishMcqPass')->name('english_mcq_pass');
+        Route::get('/first-part-pass', 'firstPartPass')->name('first_part_pass');
+        Route::get('/missing-question', 'missingQuestion')->name('missing_question');
+    });
+
+
+
+
+
 
 
 
