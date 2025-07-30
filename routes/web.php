@@ -33,8 +33,20 @@ Route::middleware('auth')->group(function () {
 Route::middleware('auth')->group(function () {
     Route::controller(UserController::class)->group(function () {
         Route::get('/user/logout', 'UserDestroy')->name('user.logout');
+        Route::get('/user/password/change','UserPasswordChange')->name('user.password.change');
+        Route::post('/user/password/update','UserPasswordUpdate')->name('user.password.update');
     });
 
+
+    //we add/edit/delete on only user(examiner/scrutinizer/admin/superadmin)
+    Route::controller(UserController::class)->group(function () {
+        Route::get('/user/all', 'AllUser')->name('user.all');
+        Route::get('/user/add', 'AddUser')->name('user.add');
+        Route::post('/user/store', 'StoreUser')->name('user.store');
+        Route::get('/user/edit/{id}', 'EditUser')->name('user.edit');
+        Route::post('/user/update', 'UpdateUser')->name('user.update');
+        Route::get('/user/delete/{id}', 'DeleteUser')->name('user.delete');
+    });
 
     //here route will be coordinator/dashboard
     //here route name will be coordinator.dashboard

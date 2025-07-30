@@ -122,13 +122,13 @@
                         </a>
                         <ul class="nav nav-children">
                             <li>
-                                <a class="nav-link" href="{{route('role.assignments.all')}}">
+                                <a class="nav-link" href="{{route('user.all')}}">
                                     All User
                                 </a>
                             </li>
 
                             <li>
-                                <a class="nav-link" href="{{route('role.assignments.add')}}">
+                                <a class="nav-link" href="{{route('user.add')}}">
                                     Add User
                                 </a>
                             </li>

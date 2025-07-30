@@ -17,6 +17,69 @@
                         </a>
                     </li>
 
+                    {{--Coordinator  Management--}}
+                    <li class="nav-parent">
+                        <a class="nav-link" href="#">
+                            <i class="fa-solid fa-user-tie" aria-hidden="true"></i>
+                            <span>Coordinator Panel</span>
+                        </a>
+                        <ul class="nav nav-children">
+                            <li>
+                                <a class="nav-link" href="{{route('coordinator.examiner.assign')}}">
+                                    Examiner Assign
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    {{-- Examiner Management --}}
+                    <li class="nav-parent">
+                        <a class="nav-link" href="#">
+                            <i class="fa-solid fa-pen-to-square" aria-hidden="true"></i>
+                            <span>Examiner Panel</span>
+                        </a>
+                        <ul class="nav nav-children">
+                            <li>
+                                <a class="nav-link" href="{{ route('examiner.dashboard') }}">
+                                    Start Entry
+                                </a>
+                            </li>
+                            <li>
+                                <a class="nav-link" href="{{ route('examiner.mark.entry') }}">
+                                    Marks Entry
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+
+                    {{-- Report Management --}}
+                    <li class="nav-parent">
+                        <a class="nav-link" href="#">
+                            <i class="fa-solid fa-pen-to-square" aria-hidden="true"></i>
+                            <span>Report</span>
+                        </a>
+                        <ul class="nav nav-children">
+                            <li>
+                                <a class="nav-link" href="{{ route('report.english_mcq_pass') }}">
+                                    English MCQ Pass Report
+                                </a>
+                            </li>
+                            <li>
+                                <a class="nav-link" href="{{ route('report.first_part_pass') }}">
+                                    First Part Pass Report
+                                </a>
+                            </li>
+                            <li>
+                                <a class="nav-link" href="{{ route('report.missing_question') }}">
+                                    Missing Question Report
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+
+
                     {{--Permission Management--}}
                     <li class="nav-parent">
                         <a class="nav-link" href="#">
@@ -59,13 +122,13 @@
                         </a>
                         <ul class="nav nav-children">
                             <li>
-                                <a class="nav-link" href="{{route('role.assignments.all')}}">
+                                <a class="nav-link" href="{{route('user.all')}}">
                                     All User
                                 </a>
                             </li>
 
                             <li>
-                                <a class="nav-link" href="{{route('role.assignments.add')}}">
+                                <a class="nav-link" href="{{route('user.add')}}">
                                     Add User
                                 </a>
                             </li>
