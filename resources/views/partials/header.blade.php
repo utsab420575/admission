@@ -16,7 +16,7 @@
             $userData = App\Models\User::find($id);
         @endphp
         {{--<span class="separator"></span>--}}
-        <div id="userbox" class="userbox pt-2" style="width: 180px;">
+        <div id="userbox" class="userbox pt-3" style="width: 180px;">
             <a href="#" data-bs-toggle="dropdown" class="d-flex align-items-center justify-content-between">
                 <div class="profile-info" data-lock-name="Admission" data-lock-email="johndoe@okler.com">
                     <span class="name">{{$userData->name}}</span>
@@ -24,7 +24,7 @@
                 </div>
                 <i class="fa custom-caret text-end"></i>
             </a>
-            <div class="dropdown-menu">
+            <div class="dropdown-menu mt-2">
                 <ul class="list-unstyled mb-2">
                     <li>
                         <a role="menuitem" tabindex="-1" href="{{route('user.password.change')}}">
