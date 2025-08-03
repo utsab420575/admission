@@ -17,7 +17,13 @@ return new class extends Migration
 
             $table->foreign('designation_id')
                 ->references('id')
-                ->on('admission.designations')
+                ->on('designations')
+                ->onDelete('set null')
+                ->onUpdate('restrict');
+
+            $table->foreign('department_id')
+                ->references('id')
+                ->on('departments')
                 ->onDelete('set null')
                 ->onUpdate('restrict');
         });
@@ -30,6 +36,7 @@ return new class extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->dropForeign(['designation_id']);
+            $table->dropForeign(['department_id']);
             $table->dropColumn(['designation_id', 'department_id']);
         });
     }

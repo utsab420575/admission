@@ -12,7 +12,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('admission.designations', function (Blueprint $table) {
+        Schema::create('designations', function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->timestamp('created_at')->useCurrent();
@@ -20,7 +20,7 @@ return new class extends Migration
         });
 
         // Insert default records
-        DB::table('admission.designations')->insert([
+        DB::table('designations')->insert([
             ['name' => 'Professor'],
             ['name' => 'Associate Professor'],
             ['name' => 'Assistant Professor'],
@@ -36,6 +36,6 @@ return new class extends Migration
 
     public function down(): void
     {
-        Schema::dropIfExists('exambill.designations');
+        Schema::dropIfExists('designations');
     }
 };

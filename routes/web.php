@@ -68,9 +68,25 @@ Route::middleware('auth')->group(function () {
 
     //for report
     Route::prefix('report')->name('report.')->controller(ReportController::class)->group(function () {
-        Route::get('/english-mcq-pass', 'englishMcqPass')->name('english_mcq_pass');
-        Route::get('/first-part-pass', 'firstPartPass')->name('first_part_pass');
-        Route::get('/missing-question', 'missingQuestion')->name('missing_question');
+        // First + Second Combined Pass
+        Route::get('/student-15-question-check', 'studentQuestionCheck')->name('student.15.question.check');
+        Route::get('/student-15-question-check/{id}', 'studentQuestionCheckByDepartment')->name('student.15.question.check.department');
+
+        // English MCQ
+        Route::get('/english-mcq-pass', 'englishMcqPass')->name('english.mcq.pass');
+        Route::get('/english-mcq-pass/{id}', 'englishMcqPassByDepartment')->name('english.mcq.pass.department');
+
+        // First Part Pass
+        Route::get('/first-part-pass', 'firstPartPass')->name('first.part.pass');
+        Route::get('/first-part-pass/{id}', 'firstPartPassByDepartment')->name('first.part.pass.department');
+
+        // Second Part Pass
+        Route::get('/second-part-pass', 'secondPartPass')->name('second.part.pass');
+        Route::get('/second-part-pass/{id}', 'secondPartPassByDepartment')->name('second.part.pass.department');
+
+        // First + Second Combined Pass
+        Route::get('/first-second-part-pass', 'firstSecondPartPass')->name('first.second.part.pass');
+        Route::get('/first-second-part-pass/{id}', 'firstSecondPartPassByDepartment')->name('first.second.part.pass.department');
     });
 
 

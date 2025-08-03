@@ -10,6 +10,7 @@
         <div class="nano-content">
             <nav id="menu" class="nav-main" role="navigation">
                 <ul class="nav nav-main">
+
                     <li>
                         <a class="nav-link" href="{{ route('dashboard') }}">
                             <i class="bx bx-home-alt" aria-hidden="true"></i>
@@ -61,19 +62,34 @@
                         </a>
                         <ul class="nav nav-children">
                             <li>
-                                <a class="nav-link" href="{{ route('report.english_mcq_pass') }}">
+                                <a class="nav-link" href="{{ route('report.student.15.question.check') }}">
+                                    Student 15 Question Check
+                                </a>
+                            </li>
+                            <li>
+                                <a class="nav-link" href="{{ route('report.english.mcq.pass') }}">
                                     English MCQ Pass Report
                                 </a>
                             </li>
                             <li>
-                                <a class="nav-link" href="{{ route('report.first_part_pass') }}">
+                                <a class="nav-link" href="{{ route('report.first.part.pass') }}">
                                     First Part Pass Report
                                 </a>
                             </li>
+
                             <li>
-                                <a class="nav-link" href="{{ route('report.missing_question') }}">
-                                    Missing Question Report
+                                <a class="nav-link" href="{{ route('report.second.part.pass') }}">
+                                    Second Part Pass Report
                                 </a>
+                            </li>
+                            <li>
+                                <a class="nav-link" href="{{ route('report.first.second.part.pass') }}">
+                                    Overall Pass Report
+                                </a>
+                            </li>
+
+                            <li class="nav-divider p-0 m-0">
+                                <hr style="border-top: 1px solid #ccc; margin: 4px 0;">
                             </li>
                         </ul>
                     </li>

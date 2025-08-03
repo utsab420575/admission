@@ -19,4 +19,9 @@ class Mcq extends Model
     public function mcqSet() {
         return $this->belongsTo(McqSet::class);
     }
+
+    public function department()
+    {
+        return $this->belongsTo(Department::class);
+    }
 }

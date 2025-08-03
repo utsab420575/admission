@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Department;
+use App\Models\Designation;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -57,7 +58,9 @@ class UserController extends Controller
     public function AddUser()
     {
         $roles = Role::all();
-        return view('users.add_user', compact('roles'));
+        $designations = Designation::all();
+        $departments = Department::all();
+        return view('users.add_user', compact('roles','designations','departments'));
     }
 
     // Store new user
@@ -68,6 +71,8 @@ class UserController extends Controller
             'email' => 'required|email|max:255|unique:users,email',
             'roles' => 'required|array',
             'roles.*' => 'string|exists:roles,name',
+            'designation_id' => 'required|exists:designations,id',
+            'department_id' => 'required|exists:departments,id',
         ]);
 
         DB::beginTransaction();
@@ -77,10 +82,12 @@ class UserController extends Controller
             $user->name = $request->name;
             $user->email = $request->email;
             $user->password = Hash::make('12345678'); // Default password
+            $user->designation_id = $request->designation_id;
+            $user->department_id = $request->department_id;
             $user->save();
 
-            // Assign multiple roles
-            $user->assignRole($request->roles); // accepts array of role names
+            // Assign roles
+            $user->assignRole($request->roles); // Accepts array
 
             DB::commit();
 
@@ -91,7 +98,7 @@ class UserController extends Controller
         } catch (\Exception $e) {
             DB::rollBack();
 
-            return redirect()->back()->with([
+            return redirect()->back()->withInput()->with([
                 'message' => 'User creation failed: ' . $e->getMessage(),
                 'alert-type' => 'error',
             ]);

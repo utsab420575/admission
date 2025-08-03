@@ -51,6 +51,42 @@
                                 </div>
                             </div>
 
+
+                            <div class="row mb-3">
+                                <div class="form-group col">
+                                    <label for="designation_id">Designation <span class="text-danger">*</span></label>
+                                    <select name="designation_id" id="designation_id" class="form-control" required>
+                                        <option value="">-- Select Designation --</option>
+                                        @foreach($designations as $designation)
+                                            <option value="{{ $designation->id }}" {{ old('designation_id') == $designation->id ? 'selected' : '' }}>
+                                                {{ $designation->name }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                    @error('designation_id')
+                                    <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <div class="form-group col">
+                                    <label for="department_id">Department <span class="text-danger">*</span></label>
+                                    <select name="department_id" id="department_id" class="form-control" required>
+                                        <option value="">-- Select Department --</option>
+                                        @foreach($departments as $department)
+                                            <option value="{{ $department->id }}" {{ old('department_id') == $department->id ? 'selected' : '' }}>
+                                                {{ $department->name }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                    @error('department_id')
+                                    <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                            </div>
+
+
                             <div class="form-group pb-3">
                                 <label for="roles" class="form-label">
                                     Assign Roles <span class="text-danger">*</span>
