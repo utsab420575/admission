@@ -49,6 +49,7 @@ class ReportController extends Controller
     public function englishMcqPassByDepartment($id)
     {
 
+        //return $id;
         // Threshold: 20% of 15 = 3 marks
        // $passMark = 0.20 * 15;
        $passMark = 3;
@@ -63,12 +64,14 @@ class ReportController extends Controller
             // Specific department
             $department = Department::findOrFail($id);
 
-            $marks = Mark::where('mp1_eng', '>=', $passMark)
+            $marks = Mark::where('mcq_eng', '>=', $passMark)
                 ->whereHas('student', function ($q) use ($id) {
                     $q->where('department_id', $id);
                 })
                 ->with('student.department')
                 ->get();
+
+            //return $marks;
 
         }
 
