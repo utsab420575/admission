@@ -12,6 +12,7 @@ use Illuminate\Http\Request;
 class ReportController extends Controller
 {
 
+    //index page
     public function studentQuestionCheck()
     {
         //exclude ipe,mme
@@ -20,6 +21,7 @@ class ReportController extends Controller
         return view('report.student_15_question_index', compact('departments'));
     }
 
+    //report print
     public function studentQuestionCheckByDepartment($id)
     {
         $department=Department::where('id',$id)->first();
